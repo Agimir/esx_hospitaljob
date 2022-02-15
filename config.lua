@@ -21,13 +21,13 @@ Config.MedCenters = {
 		HospitalActions = {
 			vector3(299.11, -598.42, 43.28), -- Pillbox Gabz
 
-			vector3(-256.20, 6327.61, 32.43) -- Pillbox Gabz
+			vector3(-256.20, 6327.61, 32.43) -- Paleto Hospital
 		},
 
 		Pharmacies = {
 			vector3(309.97, -568.40, 43.28), -- Pillbox Gabz
 
-			vector3(-260.57, 6328.16, 32.43) -- Pillbox Gabz
+			vector3(-260.57, 6328.16, 32.43) -- Paleto Hospital
 		}
 
 	}
