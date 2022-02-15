@@ -2,7 +2,7 @@ fx_version 'adamant'
 
 game 'gta5'
 
-description 'ESX Ambulance Job'
+description 'esx_hospital job'
 
 version 'legacy'
 
