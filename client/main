@@ -411,7 +411,7 @@ function OpenPharmacyMenu()
 			{label = _U('pharmacy_take', _U('medikit')), item = 'medikit', type = 'slider', value = 1, min = 1, max = 25},
 			{label = _U('pharmacy_take', _U('bandage')), item = 'bandage', type = 'slider', value = 1, min = 1, max = 25}
 	}}, function(data, menu)
-		TriggerServerEvent('esx_ambulancejob:giveItem', data.current.item, data.current.value)
+		TriggerServerEvent('esx_hospitaljob:giveItem', data.current.item, data.current.value)
 	end, function(data, menu)
 		menu.close()
 	end)
