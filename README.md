@@ -5,7 +5,8 @@ I am not taking credit, this is all code that is referenced or used from the ESX
 
 # INSTALLATION
 
-Input the SQL into your database
-Ensure or Start the resource in your CFG
-Run your server
-Congrats, you completed med school in like, 3 minutes. Go overcharge people for their bullet boo boos
+Input the SQL into your database.
+Ensure or Start the resource in your CFG.
+Run your server.
+
+Congrats, you completed med school in like, 3 minutes. Go overcharge people for their bullet boo boos.
