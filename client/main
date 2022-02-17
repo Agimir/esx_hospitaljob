@@ -132,7 +132,7 @@ function OpenMobileHospitalActionsMenu()
 				title    = _U('hospital_menu_title'),
 				align    = 'top-left',
 				elements = {
-					{label = _U('hospital_menu_revive'), value = 'revive'},
+					--{label = _U('hospital_menu_revive'), value = 'revive'}, / Revive busted, look into server side
 					{label = _U('hospital_menu_small'), value = 'small'},
 					{label = _U('hospital_menu_big'), value = 'big'}
 			}}, function(data, menu)
