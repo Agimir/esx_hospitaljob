@@ -65,31 +65,6 @@ function OnPlayerDeath()
 	StartScreenEffect('DeathFailOut', 0, false)
 end
 
--- Revive
-RegisterNetEvent('esx_hospitaljob:revive')
-AddEventHandler('esx_hospitaljob:revive', function()
-	local playerPed = PlayerPedId()
-	local coords = GetEntityCoords(playerPed)
-	TriggerServerEvent('esx_hospitaljob:setDeathStatus', false)
-
-	DoScreenFadeOut(800)
-
-	while not IsScreenFadedOut() do
-		Citizen.Wait(50)
-	end
-
-	local formattedCoords = {
-		x = ESX.Math.Round(coords.x, 1),
-		y = ESX.Math.Round(coords.y, 1),
-		z = ESX.Math.Round(coords.z, 1)
-	}
-
-	RespawnPed(playerPed, formattedCoords, 0.0)
-
-	StopScreenEffect('DeathFailOut')
-	DoScreenFadeIn(800)
-end)
-
 -- Menu
 function OpenHospitalActionsMenu()
 	local elements = {{label = _U('cloakroom'), value = 'cloakroom'}}
@@ -132,7 +107,6 @@ function OpenMobileHospitalActionsMenu()
 				title    = _U('hospital_menu_title'),
 				align    = 'top-left',
 				elements = {
-					--{label = _U('hospital_menu_revive'), value = 'revive'}, / Revive busted, look into server side
 					{label = _U('hospital_menu_small'), value = 'small'},
 					{label = _U('hospital_menu_big'), value = 'big'}
 			}}, function(data, menu)
@@ -214,38 +188,6 @@ function OpenMobileHospitalActionsMenu()
 	end, function(data, menu)
 		menu.close()
 	end)
-end
-
-function revivePlayer(closestPlayer)
-	isBusy = true
-
-	ESX.TriggerServerCallback('esx_hospitaljob:getItemAmount', function(quantity)
-		if quantity > 0 then
-			local closestPlayerPed = GetPlayerPed(closestPlayer)
-
-			if IsPedDeadOrDying(closestPlayerPed, 1) then
-				local playerPed = PlayerPedId()
-				local lib, anim = 'mini@cpr@char_a@cpr_str', 'cpr_pumpchest'
-				ESX.ShowNotification(_U('revive_inprogress'))
-
-				for i=1, 15 do
-					Citizen.Wait(900)
-
-					ESX.Streaming.RequestAnimDict(lib, function()
-						TaskPlayAnim(playerPed, lib, anim, 8.0, -8.0, -1, 0, 0.0, false, false, false)
-					end)
-				end
-
-				TriggerServerEvent('esx_hospitaljob:removeItem', 'medikit')
-				TriggerServerEvent('esx_hospitaljob:revive', GetPlayerServerId(closestPlayer))
-			else
-				ESX.ShowNotification(_U('player_not_unconscious'))
-			end
-		else
-			ESX.ShowNotification(_U('not_enough_medikit'))
-		end
-		isBusy = false
-	end, 'medikit')
 end
 
 -- Draw markers & Marker logic
@@ -408,6 +350,7 @@ function OpenPharmacyMenu()
 		title    = _U('pharmacy_menu_title'),
 		align    = 'top-left',
 		elements = {
+			{label = _U('pharmacy_take', _U('defib')), item = 'defib', type = 'slider', value = 1, min = 1, max = 25},
 			{label = _U('pharmacy_take', _U('medikit')), item = 'medikit', type = 'slider', value = 1, min = 1, max = 25},
 			{label = _U('pharmacy_take', _U('bandage')), item = 'bandage', type = 'slider', value = 1, min = 1, max = 25}
 	}}, function(data, menu)
