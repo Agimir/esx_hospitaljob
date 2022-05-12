@@ -1,10 +1,8 @@
 Config                            = {}
 
 Config.DrawDistance               = 20.0 
-Config.Marker                     = {type = 2, x = 0.4, y = 0.4, z = 0.4, r = 102, g = 0, b = 102, a = 100, rotate = true}
-Config.EnablePlayerManagement     = true 
-Config.ReviveReward               = 550  -- Revive reward, set to 0 if you don't want it enabled
-
+Config.Marker                     = {type = 2, x = 0.2, y = 0.2, z = 0.1, r = 102, g = 0, b = 102, a = 100, rotate = true}
+Config.EnablePlayerManagement     = true
 Config.Locale                     = 'en'
 
 Config.MedCenters = {
